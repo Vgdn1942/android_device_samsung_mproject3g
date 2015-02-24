@@ -1,0 +1,10 @@
+system/bin/gpsd
+system/bin/sensorservice
+system/lib/hw/gps.default.so
+system/lib/libakm.so
+system/lib/libsec-ril.so
+system/usr/idc/sec_keyboard.idc
+system/usr/keylayout/sec_keys.kl
+system/vendor/lib/hw/keystore.exynos4.so
+system/vendor/lib/hw/lights.exynos4.so
+system/vendor/lib/hw/power.exynos4.so

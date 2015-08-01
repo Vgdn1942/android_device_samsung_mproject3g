@@ -1,8 +1,13 @@
 system/bin/gpsd
+system/bin/rild
 system/bin/sensorservice
 system/lib/hw/gps.default.so
 system/lib/libakm.so
+system/lib/libreference-ril.so
+system/lib/libril.so
 system/lib/libsec-ril.so
+system/lib/hw/consumerir.default.so
+system/lib/hw/sensors.smdk4x12.so
 system/usr/idc/sec_keyboard.idc
 system/usr/keylayout/sec_keys.kl
 system/vendor/lib/hw/keystore.exynos4.so

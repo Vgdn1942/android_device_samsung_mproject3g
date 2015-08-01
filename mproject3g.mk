@@ -19,6 +19,16 @@ $(call inherit-product, device/samsung/smdk4412-common/common.mk)
 
 LOCAL_PATH := device/samsung/mproject3g
 
+#Kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+    LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+else
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -32,11 +42,17 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12 \
-    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc
+    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/rootdir/lib/modules/commkm.ko:root/lib/modules/commkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/dhd.ko:root/lib/modules/dhd.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/mvpkm.ko:root/lib/modules/mvpkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/oektestkm.ko:root/lib/modules/oektestkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/pvtcpkm.ko:root/lib/modules/pvtcpkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t03g
+    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/mproject3g
 
 # Camera Wrapper
 PRODUCT_PACKAGES += \
@@ -44,9 +60,9 @@ PRODUCT_PACKAGES += \
     libcameraservice
 
 # Sensors
-PRODUCT_PACKAGES += \
-    sensorservice \
-    sensors.smdk4x12
+#PRODUCT_PACKAGES += \
+#    sensorservice \
+#    sensors.smdk4x12
 
 # Gps
 PRODUCT_COPY_FILES += \
@@ -96,6 +112,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 

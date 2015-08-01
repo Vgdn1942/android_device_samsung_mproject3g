@@ -33,14 +33,18 @@
          does not require auto-restore. -->
     <!-- the 6th element indicates boot-time dependency-met value. -->
     <string-array translatable="false" name="networkAttributes">
-        <item>"wifi,1,1,1,-1,true"</item>
-        <item>"mobile,0,0,0,-1,true"</item>
-        <item>"mobile_mms,2,0,2,60000,true"</item>
-        <item>"mobile_supl,3,0,2,60000,true"</item>
-        <item>"mobile_dun,4,0,3,60000,true"</item>
-        <item>"mobile_hipri,5,0,3,60000,true"</item>
-        <item>"mobile_bluetooth,7,7,1,-1,true"</item>
-        <item>"wifi_p2p,13,1,0,-1,true"</item>
+        <item>wifi,1,1,1,-1,true</item>
+        <item>mobile,0,0,0,-1,true</item>
+        <item>mobile_mms,2,0,2,240000,true</item>
+        <item>mobile_supl,3,0,2,60000,true</item>
+        <item>mobile_dun,4,0,2,-1,true</item>
+        <item>mobile_hipri,5,0,3,60000,true</item>
+        <item>mobile_fota,10,0,2,60000,true</item>
+        <item>mobile_ims,11,0,2,-1,true</item>
+        <item>mobile_cbs,12,0,2,60000,true</item>
+        <item>wifi_p2p,13,1,0,-1,true</item>
+        <item>mobile_cas,24,0,3,60000,true</item>
+        <item>bluetooth,7,7,0,-1,true</item>
     </string-array>
 
     <!-- This string array should be overridden by the device to present a list of radio
@@ -67,30 +71,20 @@
     <integer-array translatable="false" name="config_tether_upstream_types">
         <item>0</item>
         <item>1</item>
+        <item>4</item>
         <item>5</item>
         <item>7</item>
+        <item>9</item>
     </integer-array>
 
     <!-- The default iface on which to monitor data use -->
-    <string name="config_datause_iface">pdp0</string>
+    <string name="config_datause_iface">rmnet0</string>
 
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
-    <bool name="config_batterySdCardAccessibility">true</bool>
+    <bool name="config_batterySdCardAccessibility">false</bool>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
-
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
-
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
-
-    <!-- Default LED on time for notification LED in milliseconds. -->
-    <integer name="config_defaultNotificationLedOn">1000</integer>
-
-    <!-- Default LED off time for notification LED in milliseconds. -->
-    <integer name="config_defaultNotificationLedOff">9000</integer>
+    <bool name="config_intrusiveNotificationLed">false</bool>
 
     <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
@@ -121,7 +115,7 @@
             64 - Volume rocker
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareWakeKeys">65</integer>
+    <!-- <integer name="config_deviceHardwareWakeKeys">65</integer> -->
 
     <!-- Workaround for devices with broken keyboards -->
     <bool name="config_forceDisableHardwareKeyboard">true</bool>

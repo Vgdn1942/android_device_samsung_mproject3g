@@ -20,43 +20,41 @@
 -include device/samsung/smdk4412-common/BoardCommonConfig.mk
 
 # RIL
-BOARD_PROVIDES_LIBRIL := true
-BOARD_MODEM_TYPE := xmm6262
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
+#BOARD_PROVIDES_LIBRIL := true
+#BOARD_MODEM_TYPE := xmm6262
+#TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetooth
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
-TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
+#TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
+#TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
+TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
 BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
 
 # ril
-BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
+#BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
 
 # Selinux
 #BOARD_SEPOLICY_DIRS := \
-    device/samsung/mproject3g/selinux
+#    device/samsung/mproject3g/selinux
 
 #BOARD_SEPOLICY_UNION := \
-    device.te \
-    domain.te \
-    file.te \
-    file_contexts \
-    init.te \
-    mediaserver.te \
-    rild.te \
-    system.te \
-    ueventd.te \
-    vold.te \
-    wpa_supplicant.te
+#    device.te \
+#    domain.te \
+#    file.te \
+#    file_contexts \
+#    init.te \
+#    mediaserver.te \
+#    rild.te \
+#    system.te \
+#    ueventd.te \
+#    vold.te \
+#    wpa_supplicant.te
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := mproject3g,mproject3gxx,SM-C101
-
-# inherit from the proprietary version
--include vendor/samsung/mproject3g/BoardConfigVendor.mk
 
 # Blobs
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -67,3 +65,6 @@ RECOVERY_FSTAB_VERSION := 2
 
 # Camera wrapper
 TARGET_PROVIDES_CAMERA_HAL := true
+
+# inherit from the proprietary version
+-include vendor/samsung/mproject3g/BoardConfigVendor.mk

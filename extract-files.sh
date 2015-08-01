@@ -101,5 +101,3 @@ EOF
 # limitations under the License.
 
 EOF
-
-./../../../device/samsung/smdk4412-common/extract-files.sh

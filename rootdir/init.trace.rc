@@ -1,5 +1,5 @@
-## Permissions to allow system-wide tracing to the kernel trace buffer.
-##
+# Permissions to allow system-wide tracing to the kernel trace buffer.
+
 on boot
 
 # Allow writing to the kernel trace log.

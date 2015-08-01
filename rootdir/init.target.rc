@@ -1,5 +1,5 @@
 on init
-    # Vibetonz
+# Vibetonz
     export VIBE_PIPE_PATH /dev/pipes
     mkdir /dev/pipes 0771 shell shell
 
@@ -7,10 +7,10 @@ on post-fs-data
     chown radio system /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
     chmod 0660 /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
 
-    # make param block device link for SysScope
+# Make param block device link for SysScope
     symlink /dev/block/mmcblk0p7 /dev/block/param
 
-    # Restorecon
+# Restorecon
     restorecon /efs/nv_data.bin
     restorecon /efs/nv_data.bin.md5
     restorecon /efs/.nv_core.bak
@@ -27,14 +27,14 @@ on post-fs-data
     restorecon /efs/gyro_cal_data
     restorecon /efs/wifi/.mac.info
 
-# icd
+# Icd
 service icd /system/bin/icd
     class main
     user system
     group system log
     onrestart exec icd_check
 
-# cbd
+# Cbd
 service cpboot-daemon /sbin/cbd -d -p 10
     class main
     user root

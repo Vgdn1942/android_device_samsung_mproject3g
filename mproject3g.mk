@@ -34,7 +34,6 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/sbin/cbd:root/sbin/cbd
 
-
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
@@ -78,11 +77,6 @@ PRODUCT_PACKAGES := \
     lights.exynos4 \
     macloader \
     tinymix
-
-ifneq ($(TARGET_HAS_CAM_FLASH) ,false)
-PRODUCT_PACKAGES += \
-    Torch
-endif
 
 # MFC API
 PRODUCT_PACKAGES += \

@@ -23,4 +23,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=mproject3gxx \
     TARGET_DEVICE=mproject3g \
     PRIVATE_BUILD_DESC="mproject3gxx-user 4.4.2 KOT49H C101XXUBNF4 release-keys" \
-    BUILD_FINGERPRINT="ro.build.fingerprint=samsung/mproject3gxx/mproject3g:4.4.2/KOT49H/C101XXUBNF4:user/release-keys"
+    BUILD_FINGERPRINT="samsung/mproject3gxx/mproject3g:4.4.2/KOT49H/C101XXUBNF4:user/release-keys"

@@ -17,6 +17,9 @@
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 
+# inherit from the proprietary version
+-include vendor/samsung/mproject3g/BoardConfigVendor.mk
+
 USE_CAMERA_STUB := true
 BOARD_USES_GENERIC_AUDIO := false
 
@@ -216,6 +219,3 @@ RECOVERY_FSTAB_VERSION := 2
 
 # Camera wrapper
 TARGET_PROVIDES_CAMERA_HAL := true
-
-# inherit from the proprietary version
--include vendor/samsung/mproject3g/BoardConfigVendor.mk

@@ -1,5 +1,6 @@
 Добавление коммита:
 
+~/cm-11/device/samsung/mproject3g
 git add .
 git commit -a -m "Название коммита"
 

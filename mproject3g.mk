@@ -48,13 +48,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/98netflix:system/etc/init.d/98netflix
 
-# Wifi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
-
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=180
 
 # Gps
 PRODUCT_COPY_FILES += \
@@ -79,11 +75,6 @@ PRODUCT_PACKAGES := \
     lights.exynos4 \
     macloader \
     tinymix
-
-ifneq ($(TARGET_HAS_CAM_FLASH) ,false)
-PRODUCT_PACKAGES += \
-    Torch
-endif
 
 # MFC API
 PRODUCT_PACKAGES += \

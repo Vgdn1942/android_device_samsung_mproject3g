@@ -83,8 +83,7 @@ done
 DEVICE_PACKAGE_OVERLAYS += vendor/__VENDOR__/__DEVICE__/overlay
 
 PRODUCT_PACKAGES += \\
-    libfimc \\
-    libUMP
+    libfimc
 
 \$(call inherit-product, vendor/__VENDOR__/__DEVICE__/__DEVICE__-vendor-blobs.mk)
 EOF

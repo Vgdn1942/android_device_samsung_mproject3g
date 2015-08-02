@@ -22,6 +22,7 @@ system/etc/wifi/wpa_supplicant_overlay.conf
 
 system/lib/hw/consumerir.default.so
 system/lib/hw/gps.default.so
+system/lib/hw/hwcomposer.smdk4x12.so
 system/lib/hw/sensors.smdk4x12.so
 
 system/lib/egl/libEGL_mali.so
@@ -48,7 +49,6 @@ system/lib/libsec-ril.so
 system/lib/libsecnativefeature.so
 system/lib/libsecion.so
 system/lib/libTVOut.so
-system/lib/libUMP.so
 system/lib/libhdmi.so
 system/lib/libhdmiclient.so
 system/lib/libquramimagecodec.so

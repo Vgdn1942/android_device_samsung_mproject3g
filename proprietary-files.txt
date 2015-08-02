@@ -1,5 +1,3 @@
-sbin/cbd
-
 system/bin/gps.cer
 system/bin/gpsd
 system/bin/bintvoutservice

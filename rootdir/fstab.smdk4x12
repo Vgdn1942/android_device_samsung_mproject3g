@@ -22,3 +22,4 @@
 # Recovery
 /dev/block/mmcblk0p9		/boot		emmc	defaults	recoveryonly
 /dev/block/mmcblk0p10		/recovery	emmc	defaults	recoveryonly
+/dev/block/mmcblk0p13		/modem		emmc	defaults	recoveryonly

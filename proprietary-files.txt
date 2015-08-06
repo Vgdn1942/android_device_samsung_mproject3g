@@ -20,8 +20,6 @@ system/etc/wifi/p2p_supplicant_overlay.conf
 system/etc/wifi/wpa_supplicant.conf
 system/etc/wifi/wpa_supplicant_overlay.conf
 
-system/lib/hw/bluetooth.default.so
-system/lib/hw/camera.smdk4x12.so
 system/lib/hw/consumerir.default.so
 system/lib/hw/gps.default.so
 system/lib/hw/nfc_nci.smdk4x12.so
@@ -32,12 +30,7 @@ system/lib/egl/libGLESv1_CM_mali.so
 system/lib/egl/libGLESv2_mali.so
 
 system/lib/libakm.so
-system/lib/libaudio-ril.so
 system/lib/libaudiosa.so
-system/lib/libbluetooth_jni.so
-system/lib/libcamera_client.so
-system/lib/libcameraservice.so
-system/lib/libcamera_metadata.so
 system/lib/libcec.so
 system/lib/libddc.so
 system/lib/libedid.so
@@ -52,9 +45,7 @@ system/lib/libMcVersion.so
 system/lib/libQmageDecoder.so
 system/lib/libreference-ril.so
 system/lib/libril.so
-system/lib/librilutils.so
 system/lib/libsec-ril.so
-system/lib/libsecril-client.so
 system/lib/libsecnativefeature.so
 system/lib/libsecion.so
 system/lib/libTVOut.so

@@ -127,8 +127,8 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 # Charger
-#PRODUCT_PACKAGES += \
-#    charger_res_images
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -233,9 +233,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/mproject3g
 
 # Camera Wrapper
-#PRODUCT_PACKAGES += \
-#    camera.smdk4x12 \
-#    libcameraservice
+PRODUCT_PACKAGES += \
+    camera.smdk4x12 \
+    libcameraservice
 
 # Sensors
 #PRODUCT_PACKAGES += \
@@ -252,10 +252,6 @@ PRODUCT_PACKAGES += \
 #    libsecril-client \
 #    libsecril-client-sap \
 
-# Bluetooth
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/com.broadcom.bt.xml:system/etc/permissions/com.broadcom.bt.xml
-
 # NFC
 PRODUCT_PACKAGES += \
     libnfc-nci \
@@ -268,8 +264,7 @@ PRODUCT_COPY_FILES += \
     packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt \
     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    $(LOCAL_PATH)/configs/com.broadcom.nfc.xml:system/etc/permissions/com.broadcom.nfc.xml
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -285,7 +280,7 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    mobiledata.interfaces=rmnet0,wlan0,gprs,ppp0 \
+    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
 #    ro.telephony.ril_class=SamsungExynos4RIL \

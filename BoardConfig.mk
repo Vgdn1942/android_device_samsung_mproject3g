@@ -115,6 +115,9 @@ TARGET_USES_LOGD := false
 
 BOARD_USES_LEGACY_MMAP := true
 
+# RIL
+BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
+
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
 BOARD_WLAN_DEVICE_REV            := bcm4334
@@ -140,8 +143,7 @@ BOARD_HAVE_SAMSUNG_WIFI          := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
-#BOARD_BLUEDROID_VENDOR_CONF := device/samsung/mproject3g/bluetooth/vnd_smdk4x12.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/mproject3g/bluetooth/vnd_smdk4x12.txt
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
@@ -159,7 +161,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
-BOARD_CHARGER_ENABLE_SUSPEND := true
+#BOARD_CHARGER_ENABLE_SUSPEND := true
 BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
 
 # Override healthd HAL
@@ -169,14 +171,18 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.exynos4
 #BOARD_PROVIDES_LIBRIL := true
 #BOARD_MODEM_TYPE := xmm6262
 #TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
-BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
-#BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetooth
 
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 #TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
 TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
 BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
+
+# ril
+#BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
 
 # Selinux
 BOARD_SEPOLICY_DIRS := \
@@ -204,6 +210,9 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/mproject3g/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
+
+# Camera wrapper
+TARGET_PROVIDES_CAMERA_HAL := true
 
 # inherit from the proprietary version
 -include vendor/samsung/mproject3g/BoardConfigVendor.mk

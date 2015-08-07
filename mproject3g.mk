@@ -234,8 +234,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera Wrapper
 PRODUCT_PACKAGES += \
-    camera.smdk4x12 \
-    libcameraservice
+    camera.exynos4
 
 # Sensors
 #PRODUCT_PACKAGES += \
@@ -280,7 +279,7 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
+    mobiledata.interfaces=rmnet0,wlan0,gprs,ppp0 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
 #    ro.telephony.ril_class=SamsungExynos4RIL \

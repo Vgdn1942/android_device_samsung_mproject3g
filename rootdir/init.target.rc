@@ -4,11 +4,19 @@ on init
     mkdir /dev/pipes 0771 shell shell
 
 on post-fs-data
+# Permissions for Camera
+    chown system radio /sys/class/camera/rear/rear_camfw
+    chown system radio /sys/class/camera/rear/rear_camtype
+    chown system radio /sys/class/camera/rear/rear_flash
+    chown system radio /sys/class/camera/rear/rear_vendorid
+    chown system media_rw /sys/class/camera/rear/rear_checkApp
+    chown system media_rw /sys/class/camera/rear/rear_camclose
+    chown system radio /sys/class/camera/rear/isp_core
+    chown system radio /sys/class/camera/front/front_camfw
+    chown system radio /sys/class/camera/front/front_camtype
+    chown system radio /sys/class/camera/flash/rear_flash
     chown radio system /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
     chmod 0660 /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
-
-# Make param block device link for SysScope
-    symlink /dev/block/mmcblk0p7 /dev/block/param
 
 # Restorecon
     restorecon /efs/nv_data.bin

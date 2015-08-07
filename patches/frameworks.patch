@@ -6,7 +6,7 @@ index 4b0e720..e177fb7 100644
                      preloadRecentApps();
                  }
                  if (repeatCount == 0) {
-+                performHapticFeedbackLw(null, HapticFeedbackConstants.KEYBOARD_TAP, false);
++                performHapticFeedbackLw(null, HapticFeedbackConstants.VIRTUAL_KEY, false);
                      mMenuPressed = true;
                      if (mEnableShiftMenuBugReports && (metaState & chordBug) == chordBug) {
                          Intent intent = new Intent(Intent.ACTION_BUG_REPORT);

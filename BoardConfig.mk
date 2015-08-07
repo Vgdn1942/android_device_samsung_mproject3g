@@ -116,7 +116,7 @@ TARGET_USES_LOGD := false
 BOARD_USES_LEGACY_MMAP := true
 
 # RIL
-BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
+BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -152,7 +152,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/l
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/mproject3g/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/mproject3g/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true

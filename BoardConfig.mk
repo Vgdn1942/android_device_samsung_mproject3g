@@ -179,7 +179,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetoo
 #TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
 #TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
 TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
-BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := 
 
 # ril
 #BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java

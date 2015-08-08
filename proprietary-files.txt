@@ -139,7 +139,6 @@ system/vendor/firmware/bcm2079xB4_pre_firmware.ncd
 system/vendor/firmware/bcm4334.hcd
 system/vendor/firmware/bcm4334_murata.hcd
 system/vendor/firmware/bcm4334_semco.hcd
-system/vendor/firmware/BT_FW_VER_BCM4334B0_002.001.013.1806.1996_M_B52_ORC.hcd
 system/vendor/firmware/fimc_is_fw.bin
 system/vendor/firmware/mfc_fw.bin
 system/vendor/firmware/setfile.bin
@@ -153,6 +152,14 @@ system/vendor/lib/hw/power.exynos4.so
 system/vendor/lib/liblvverx_3.21.13.so
 system/vendor/lib/liblvvetx_3.21.13.so
 system/vendor/lib/libwvdrm_L3.so
-system/vendor/lib/libbt-vendor.so
 system/vendor/lib/libWVStreamControlAPI_L3.so
 system/vendor/lib/mediadrm/libwvdrmengine.so
+
+# Bluetooth
+
+system/vendor/firmware/BT_FW_VER_BCM4334B0_002.001.013.1806.1996_M_B52_ORC.hcd
+
+system/etc/bluetooth/auto_pair_devlist.conf
+system/etc/bluetooth/bt_did.conf
+system/etc/bluetooth/bt_stack.conf
+system/etc/bluetooth/iop_device_list.conf

@@ -300,7 +300,6 @@ on fs
     chown system radio /sys/class/sec/switch/adc
     chown system radio /sys/class/sec/switch/apo_factory
 
-on post-fs
     chown radio system /efs
     chmod 0771 /efs
     chown radio radio /sys/devices/virtual/misc/multipdp/waketime

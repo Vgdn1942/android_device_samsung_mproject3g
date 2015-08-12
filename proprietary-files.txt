@@ -1,20 +1,42 @@
-# GPS
+# Bluetooth
+system/vendor/firmware/BT_FW_VER_BCM4334B0_002.001.013.1806.1996_M_B52_ORC.hcd
+system/etc/bluetooth/auto_pair_devlist.conf
+system/etc/bluetooth/bt_did.conf
+system/etc/bluetooth/bt_stack.conf
+system/etc/bluetooth/iop_device_list.conf
+system/vendor/firmware/bcm2079xB4_firmware.ncd
+system/vendor/firmware/bcm2079xB4_pre_firmware.ncd
 
+# GPS
 system/bin/gps.cer
 system/bin/gpsd
 system/lib/libwrappergps.so
 system/lib/hw/gps.default.so
 
-system/bin/bintvoutservice
-system/bin/lpm
-system/bin/rild
-system/bin/sensorservice
+# RIL
+system/lib/libsec-ril.so
 
+# Sensors
+system/bin/sensorservice
+system/lib/hw/sensors.smdk4x12.so
+
+# TV out
+system/bin/bintvoutservice
+system/lib/libTVOut.so
+
+# Camera
 system/cameradata/datapattern_420sp.yuv
 system/cameradata/datapattern_front_420sp.yuv
+#system/lib/hw/camera.smdk4x12.so
+#system/lib/libarccamera.so
+#system/lib/libcamera_client.so
+#system/lib/libcameraservice.so
+#system/lib/libseccameracore.so
+#system/lib/libseccamera_jni.so
+#system/lib/libcamera_metadata.so
+#system/lib/libseccameraeffect.so
 
-system/etc/libnfc-brcm.conf
-system/etc/srm.bin
+# Wi-Fi
 system/etc/wifi/bcmdhd_apsta.bin_b2
 system/etc/wifi/bcmdhd_mfg.bin_b2
 system/etc/wifi/bcmdhd_p2p.bin_b2
@@ -24,15 +46,21 @@ system/etc/wifi/nvram_net.txt
 system/etc/wifi/p2p_supplicant_overlay.conf
 system/etc/wifi/wpa_supplicant.conf
 system/etc/wifi/wpa_supplicant_overlay.conf
+system/vendor/firmware/bcm4334.hcd
+system/vendor/firmware/bcm4334_murata.hcd
+system/vendor/firmware/bcm4334_semco.hcd
 
+# IR
 system/lib/hw/consumerir.default.so
-system/lib/hw/nfc_nci.smdk4x12.so
-system/lib/hw/sensors.smdk4x12.so
 
+# NFC
+system/lib/hw/nfc_nci.smdk4x12.so
+system/etc/libnfc-brcm.conf
+
+# Graphics
 system/lib/egl/libEGL_mali.so
 system/lib/egl/libGLESv1_CM_mali.so
 system/lib/egl/libGLESv2_mali.so
-
 system/lib/libakm.so
 system/lib/libaudiosa.so
 system/lib/libcec.so
@@ -47,18 +75,16 @@ system/lib/libMcClient.so
 system/lib/libMcRegistry.so
 system/lib/libMcVersion.so
 system/lib/libQmageDecoder.so
-system/lib/libreference-ril.so
-system/lib/libril.so
-system/lib/libsec-ril.so
 system/lib/libsecnativefeature.so
 system/lib/libsecion.so
-system/lib/libTVOut.so
 system/lib/libUMP.so
 system/lib/libhdmi.so
 system/lib/libhdmiclient.so
 system/lib/libquramimagecodec.so
 system/lib/libvdis.so
 
+# Charge
+system/bin/lpm
 system/media/Disconnected.qmg
 system/media/battery_batteryerror.qmg
 system/media/battery_charging_10.qmg
@@ -84,18 +110,18 @@ system/media/battery_charging_95.qmg
 system/media/battery_error.qmg
 system/media/chargingwarning.qmg
 
+# Key/Tochscreen
+system/vendor/lib/hw/keystore.exynos4.so
 system/usr/idc/melfas_ts.idc
 system/usr/idc/sec_keyboard.idc
 system/usr/idc/Synaptics_HID_TouchPad.idc
 system/usr/idc/qwerty.idc
 system/usr/idc/qwerty2.idc
-
 system/usr/keychars/Generic.kcm
 system/usr/keychars/Virtual.kcm
 system/usr/keychars/qwerty.kcm
 system/usr/keychars/qwerty2.kcm
 system/usr/keychars/smdk4x12-keypad.kcm
-
 system/usr/keylayout/AVRCP.kl
 system/usr/keylayout/Generic.kl
 system/usr/keylayout/pixcir-i2c-ts_key.kl
@@ -138,32 +164,19 @@ system/usr/keylayout/Vendor_22b8_Product_093d.kl
 system/usr/keylayout/Vendor_2378_Product_100a.kl
 system/usr/keylayout/Vendor_2943_Product_0020.kl
 
-system/vendor/firmware/bcm2079xB4_firmware.ncd
-system/vendor/firmware/bcm2079xB4_pre_firmware.ncd
-system/vendor/firmware/bcm4334.hcd
-system/vendor/firmware/bcm4334_murata.hcd
-system/vendor/firmware/bcm4334_semco.hcd
+# Firmware
+system/etc/srm.bin
 system/vendor/firmware/fimc_is_fw.bin
 system/vendor/firmware/mfc_fw.bin
 system/vendor/firmware/setfile.bin
 system/vendor/firmware/M9MO_SFW.bin
 system/vendor/firmware/RS_M9MO.bin
-
-system/vendor/lib/hw/keystore.exynos4.so
 system/vendor/lib/hw/lights.exynos4.so
 system/vendor/lib/hw/power.exynos4.so
 
+# DRM
 system/vendor/lib/liblvverx_3.21.13.so
 system/vendor/lib/liblvvetx_3.21.13.so
 system/vendor/lib/libwvdrm_L3.so
 system/vendor/lib/libWVStreamControlAPI_L3.so
 system/vendor/lib/mediadrm/libwvdrmengine.so
-
-# Bluetooth
-
-system/vendor/firmware/BT_FW_VER_BCM4334B0_002.001.013.1806.1996_M_B52_ORC.hcd
-
-system/etc/bluetooth/auto_pair_devlist.conf
-system/etc/bluetooth/bt_did.conf
-system/etc/bluetooth/bt_stack.conf
-system/etc/bluetooth/iop_device_list.conf

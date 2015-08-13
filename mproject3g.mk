@@ -33,7 +33,8 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
-    $(LOCAL_PATH)/rootdir/sbin/cbd:root/sbin/cbd
+    $(LOCAL_PATH)/rootdir/sbin/cbd:root/sbin/cbd \
+    $(LOCAL_PATH)/rootdir/sbin/healthd:root/sbin/healthd
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -210,14 +211,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuild_chromium/libstagefright_chromium_http.so:system/lib/libstagefright_chromium_http.so
 endif
 
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
-
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
+# Resolution
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
@@ -251,10 +245,10 @@ PRODUCT_COPY_FILES += \
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
-    libsecril-client \
-    libsecril-client-sap \
     Stk \
-    SamsungServiceMode
+    SamsungServiceMode \
+    libsecril-client \
+    libsecril-client-sap
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -284,16 +278,15 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungExynos4RIL \
     mobiledata.interfaces=rmnet0,wlan0,gprs,ppp0 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
+#    ro.telephony.ril_class=SamsungExynos4RIL \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
-
 
 $(call inherit-product-if-exists, vendor/samsung/mproject3g/mproject3g-vendor.mk)

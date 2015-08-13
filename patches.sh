@@ -15,7 +15,7 @@ txtrst=$(tput sgr0) # Reset
 
 # Отключение сборки WEBVIEWCHROMIUM при TARGET_PREBUILT_WEBVIEWCHROMIUM := yes
 if
-grep -rx 'TARGET_PREBUILT_WEBVIEWCHROMIUM := yes' $DSTDIR/device/samsung/mproject3g/BoardConfig.mk > /dev/null
+grep -rx 'PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes' $DSTDIR/device/samsung/mproject3g/BoardConfig.mk > /dev/null
 then
 if
 echo "${grn}Патч 'libwebviewchromium'${txtrst}"

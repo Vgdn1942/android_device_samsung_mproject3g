@@ -6,7 +6,7 @@ index 2effc4e..eb805dd 100644
  # This package provides a layer of abstraction that allows the WebView
  # implementation to be replaced in the dependency graph.
  
-+ifneq ($(TARGET_PREBUILT_WEBVIEWCHROMIUM),yes)
++ifneq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
  LOCAL_PATH := $(call my-dir)
  include $(CLEAR_VARS)
  

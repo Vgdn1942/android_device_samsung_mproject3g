@@ -14,7 +14,11 @@ system/lib/libwrappergps.so
 system/lib/hw/gps.default.so
 
 # RIL
+system/bin/at_distributor
+system/bin/rild
 system/lib/libsec-ril.so
+system/lib/libril.so
+system/lib/librilutils.so
 
 # Sensors
 system/bin/sensorservice

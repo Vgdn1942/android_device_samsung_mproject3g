@@ -1,8 +1,3 @@
-on init
-# Vibetonz
-    export VIBE_PIPE_PATH /dev/pipes
-    mkdir /dev/pipes 0771 shell shell
-
 on post-fs-data
 # Permissions for Camera
     chown system radio /sys/class/camera/rear/rear_camfw
@@ -35,18 +30,21 @@ on post-fs-data
     restorecon /efs/gyro_cal_data
     restorecon /efs/wifi/.mac.info
 
-# Icd
-service icd /system/bin/icd
-    class main
-    user system
-    group system log
-    onrestart exec icd_check
+on fs
+    # IPC sysfs
+    chown radio radio /sys/devices/virtual/misc/multipdp/waketime
+    symlink /dev/block/mmcblk0p13 /dev/mbin0
 
-# Cbd
+# AT Distributor for factory test
+service at_distributor /system/bin/at_distributor
+    class late_start
+    user root
+    group radio log
+
 on property:init.svc.ril-daemon=restarting
     restart cpboot-daemon
 
-service cpboot-daemon /sbin/cbd -d -p 13
+service cpboot-daemon /sbin/cbd -d -txmm626 -bh -mh -p13
     class main
     user root
     group radio cache inet misc audio sdcard_rw log

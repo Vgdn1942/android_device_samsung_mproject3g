@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# This variable is set first, so it can be overridden
-# by BoardConfigVendor.mk
-
 USE_CAMERA_STUB := true
 BOARD_USES_GENERIC_AUDIO := false
 
@@ -119,7 +116,7 @@ BOARD_USES_LEGACY_MMAP := true
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
 
-# Wifi
+# Wi-fi
 BOARD_WLAN_DEVICE                := bcmdhd
 BOARD_WLAN_DEVICE_REV            := bcm4334
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -184,7 +181,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetoo
 #TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
 TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
 
-# ril
+# RIL
 #BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
 
 # Webviewchromium
@@ -213,7 +210,7 @@ BOARD_SEPOLICY_UNION := \
     vold.te \
     wpa_supplicant.te
 
-# assert
+# Assert
 TARGET_OTA_ASSERT_DEVICE := mproject3g,mproject3gxx,SM-C101
 
 # Blobs
@@ -223,5 +220,5 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 TARGET_RECOVERY_FSTAB := device/samsung/mproject3g/rootdir/fstab.smdk4x12
 RECOVERY_FSTAB_VERSION := 2
 
-# inherit from the proprietary version
+# Inherit from the proprietary version
 -include vendor/samsung/mproject3g/BoardConfigVendor.mk

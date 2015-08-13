@@ -49,6 +49,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/98netflix:system/etc/init.d/98netflix
 
+# Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=180
@@ -109,17 +110,9 @@ PRODUCT_PACKAGES += \
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
-    NoiseField \
-    PhaseBeam \
     librs_jni
-#    Galaxy4 \
-#    HoloSpiralWallpaper \
-#    LiveWallpapers \
-#    MagicSmokeWallpapers \
-#    VisualizationWallpapers \
 
-
-# Wifi
+# Wi-fi
 PRODUCT_PACKAGES += \
     libwpa_client \
     hostapd \
@@ -128,8 +121,8 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 # Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
+#PRODUCT_PACKAGES += \
+#    charger_res_images
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -185,6 +178,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0
 
+# Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
     dalvik.vm.heapgrowthlimit=128m \
@@ -198,7 +192,7 @@ TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
 $(call inherit-product, hardware/samsung/exynos4x12.mk)
 
-#Kernel
+# Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else

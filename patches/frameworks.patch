@@ -1,5 +1,18 @@
+diff --git a/media/jni/android_mtp_MtpServer.cpp b/media/jni/android_mtp_MtpServer.cpp
+index 5252a3a..2d382e3 100644
+--- a/media/jni/android_mtp_MtpServer.cpp
++++ b/media/jni/android_mtp_MtpServer.cpp
+@@ -59,7 +59,7 @@ static inline MtpServer* getMtpServer(JNIEnv *env, jobject thiz) {
+ static void
+ android_mtp_MtpServer_setup(JNIEnv *env, jobject thiz, jobject javaDatabase, jboolean usePtp)
+ {
+-    int fd = open("/dev/mtp_usb", O_RDWR);
++    int fd = open("/dev/usb_mtp_gadget", O_RDWR);
+     if (fd >= 0) {
+         MtpServer* server = new MtpServer(fd, getMtpDatabase(env, javaDatabase),
+                 usePtp, AID_MEDIA_RW, 0664, 0775);
 diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-index 4b0e720..e177fb7 100644
+index 4b0e720..17b96f2 100644
 --- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 +++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 @@ -2664,6 +2664,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {

@@ -27,8 +27,6 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # Init files
 PRODUCT_COPY_FILES := \
-    $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12 \
-    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
     $(LOCAL_PATH)/rootdir/init.smdk4x12.rc:root/init.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/init.smdk4x12.usb.rc:root/init.smdk4x12.usb.rc \
     $(LOCAL_PATH)/rootdir/init.trace.rc:root/init.trace.rc \
@@ -37,18 +35,8 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
     $(LOCAL_PATH)/rootdir/sbin/cbd:root/sbin/cbd
 
-# Modules
-PRODUCT_COPY_FILES := \
-    $(LOCAL_PATH)/rootdir/lib/modules/commkm.ko:root/lib/modules/commkm.ko \
-    $(LOCAL_PATH)/rootdir/lib/modules/dhd.ko:root/lib/modules/dhd.ko \
-    $(LOCAL_PATH)/rootdir/lib/modules/mvpkm.ko:root/lib/modules/mvpkm.ko \
-    $(LOCAL_PATH)/rootdir/lib/modules/oektestkm.ko:root/lib/modules/oektestkm.ko \
-    $(LOCAL_PATH)/rootdir/lib/modules/pvtcpkm.ko:root/lib/modules/pvtcpkm.ko \
-    $(LOCAL_PATH)/rootdir/lib/modules/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko
-
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/mproject3g \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/silence.wav:system/etc/sound/silence.wav
@@ -61,22 +49,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/98netflix:system/etc/init.d/98netflix
 
-# Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=180
 
-PRODUCT_PACKAGES += \
-    libwpa_client \
-    hostapd \
-    dhcpcd.conf \
-    wpa_supplicant \
-    wpa_supplicant.conf
-
 # Gps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
+    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
 
 # Packages
 PRODUCT_PACKAGES := \
@@ -130,7 +109,23 @@ PRODUCT_PACKAGES += \
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
+    NoiseField \
+    PhaseBeam \
     librs_jni
+#    Galaxy4 \
+#    HoloSpiralWallpaper \
+#    LiveWallpapers \
+#    MagicSmokeWallpapers \
+#    VisualizationWallpapers \
+
+
+# Wifi
+PRODUCT_PACKAGES += \
+    libwpa_client \
+    hostapd \
+    dhcpcd.conf \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -190,7 +185,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0
 
-# Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
     dalvik.vm.heapgrowthlimit=128m \
@@ -204,7 +198,7 @@ TARGET_HAL_PATH := hardware/samsung/exynos4/hal
 TARGET_OMX_PATH := hardware/samsung/exynos/multimedia/openmax
 $(call inherit-product, hardware/samsung/exynos4x12.mk)
 
-# Kernel
+#Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
@@ -214,8 +208,17 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
+# Webviewchromium
+ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuild_chromium/libwebviewchromium.so:system/lib/libwebviewchromium.so \
+    $(LOCAL_PATH)/prebuild_chromium/libchromium_net.so:system/lib/libchromium_net.so \
+    $(LOCAL_PATH)/prebuild_chromium/libstagefright_chromium_http.so:system/lib/libstagefright_chromium_http.so
+endif
+
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -224,9 +227,33 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
+# Init files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12 \
+    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/rootdir/lib/modules/commkm.ko:root/lib/modules/commkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/dhd.ko:root/lib/modules/dhd.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/mvpkm.ko:root/lib/modules/mvpkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/oektestkm.ko:root/lib/modules/oektestkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/pvtcpkm.ko:root/lib/modules/pvtcpkm.ko \
+    $(LOCAL_PATH)/rootdir/lib/modules/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko
+
+# Audio
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/mproject3g
+
 # Camera Wrapper
 PRODUCT_PACKAGES += \
     camera.smdk4x12
+
+# Sensors
+#PRODUCT_PACKAGES += \
+#    sensorservice \
+#    sensors.smdk4x12
+
+# Gps
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
 
 # Product specific Packages
 PRODUCT_PACKAGES += \

@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# This variable is set first, so it can be overridden
+# by BoardConfigVendor.mk
+
 USE_CAMERA_STUB := true
 BOARD_USES_GENERIC_AUDIO := false
 
@@ -52,9 +55,6 @@ TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
 # Kernel
-#TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
-#TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
-TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -118,12 +118,8 @@ BOARD_USES_LEGACY_MMAP := true
 
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME := "rmnet0"
-BOARD_PROVIDES_LIBRIL := true
-BOARD_MODEM_TYPE := xmm6262
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
-#BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
 
-# Wi-fi
+# Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
 BOARD_WLAN_DEVICE_REV            := bcm4334
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -149,22 +145,22 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 BOARD_BLUEDROID_VENDOR_CONF := device/samsung/mproject3g/bluetooth/vnd_smdk4x12.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetooth
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
+
+# MTP
+BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/mproject3g/recovery/recovery_keys.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/mproject3g/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := device/samsung/mproject3g/rootdir/fstab.smdk4x12
-RECOVERY_FSTAB_VERSION := 2
 
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
@@ -174,6 +170,25 @@ BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
 
 # Override healthd HAL
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.exynos4
+
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+BOARD_MODEM_TYPE := xmm6262
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetooth
+
+# Kernel
+#TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
+#TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
+TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
+
+# ril
+#BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
+
+# Webviewchromium
+TARGET_PREBUILT_WEBVIEWCHROMIUM := yes
 
 # Selinux
 BOARD_SEPOLICY_DIRS := \
@@ -198,11 +213,15 @@ BOARD_SEPOLICY_UNION := \
     vold.te \
     wpa_supplicant.te
 
-# Assert
+# assert
 TARGET_OTA_ASSERT_DEVICE := mproject3g,mproject3gxx,SM-C101
 
 # Blobs
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
-# Inherit from the proprietary version
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/mproject3g/rootdir/fstab.smdk4x12
+RECOVERY_FSTAB_VERSION := 2
+
+# inherit from the proprietary version
 -include vendor/samsung/mproject3g/BoardConfigVendor.mk

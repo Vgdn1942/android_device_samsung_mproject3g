@@ -1,0 +1,14 @@
+diff --git a/media/libstagefright/chromium_http/Android.mk b/media/libstagefright/chromium_http/Android.mk
+index 109e3fe..17772f4 100644
+--- a/media/libstagefright/chromium_http/Android.mk
++++ b/media/libstagefright/chromium_http/Android.mk
+@@ -1,3 +1,4 @@
++ifneq ($(TARGET_PREBUILT_WEBVIEWCHROMIUM),yes)
+ LOCAL_PATH:= $(call my-dir)
+ 
+ ifneq ($(TARGET_BUILD_PDK), true)
+@@ -37,3 +38,4 @@ LOCAL_MODULE_TAGS := optional
+ 
+ include $(BUILD_SHARED_LIBRARY)
+ endif
++endif

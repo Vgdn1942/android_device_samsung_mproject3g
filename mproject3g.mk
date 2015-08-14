@@ -33,8 +33,7 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
-    $(LOCAL_PATH)/rootdir/sbin/cbd:root/sbin/cbd \
-    $(LOCAL_PATH)/rootdir/sbin/healthd:root/sbin/healthd
+    $(LOCAL_PATH)/rootdir/sbin/cbd:root/sbin/cbd
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -122,8 +121,8 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 # Charger
-#PRODUCT_PACKAGES += \
-#    charger_res_images
+PRODUCT_PACKAGES += \
+    charger_res_images
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -231,8 +230,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/mproject3g
 
 # Camera Wrapper
-PRODUCT_PACKAGES += \
-    camera.smdk4x12
+#PRODUCT_PACKAGES += \
+#    camera.smdk4x12
 
 # Sensors
 #PRODUCT_PACKAGES += \
@@ -278,10 +277,10 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=SamsungExynos4RIL \
     mobiledata.interfaces=rmnet0,wlan0,gprs,ppp0 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
-#    ro.telephony.ril_class=SamsungExynos4RIL \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

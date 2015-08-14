@@ -61,6 +61,6 @@ echo "${red}Не применён!${txtrst}"
 echo "-----------------------"
 fi
 
-#cd $DSTDIR
+cd $DSTDIR
 
 #git diff > x.patch

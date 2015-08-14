@@ -1,0 +1,10 @@
+mkdir ~/cm-11.0
+repo init -u git://github.com/CyanogenMod/android.git -b cm-11.0
+cp -r ~/cm-11.0/device/samsung/mproject3g/copy_to_.repo/local_manifests ~/cm-11.0/.repo
+repo sync -f
+cd ~/cm-11.0/device/samsung/mproject3g
+. patches.sh ~/cm-11.0
+cd ~/cm-11.0
+. build/envsetup.sh
+croot
+brunch mproject3g

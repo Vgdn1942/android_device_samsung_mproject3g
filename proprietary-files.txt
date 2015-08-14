@@ -15,10 +15,10 @@ system/lib/hw/gps.default.so
 
 # RIL
 system/bin/at_distributor
-system/bin/rild
+#system/bin/rild
 system/lib/libsec-ril.so
-system/lib/libril.so
-system/lib/librilutils.so
+#system/lib/libril.so
+#system/lib/librilutils.so
 
 # Sensors
 system/bin/sensorservice
@@ -31,13 +31,13 @@ system/lib/libTVOut.so
 # Camera
 system/cameradata/datapattern_420sp.yuv
 system/cameradata/datapattern_front_420sp.yuv
-#system/lib/hw/camera.smdk4x12.so
+system/lib/hw/camera.smdk4x12.so
+#system/lib/libcamera_client.so
 #system/lib/libarccamera.so
 #system/lib/libcamera_client.so
 #system/lib/libcameraservice.so
 #system/lib/libseccameracore.so
 #system/lib/libseccamera_jni.so
-#system/lib/libcamera_metadata.so
 #system/lib/libseccameraeffect.so
 
 # Wi-Fi

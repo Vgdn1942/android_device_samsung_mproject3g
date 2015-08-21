@@ -138,6 +138,9 @@ on boot
     chown system system /dev/s5p-smem
     chmod 0660 /dev/s5p-smem
 
+    # Camera
+    mkdir /data/cfw 0775 system system
+
     # WIFI
     setprop wifi.interface wlan0
 
@@ -208,6 +211,16 @@ on boot
 
     # Camera For M_Project
     chown media system /sys/class/camera/rear/rear_cancelwait
+
+    # Permissions for Camera
+    chown system radio /sys/class/camera/rear/rear_camfw
+    chown system radio /sys/class/camera/rear/rear_camtype
+    chown system media_rw /sys/class/camera/rear/rear_checkApp
+    chown system media_rw /sys/class/camera/rear/rear_camclose
+    chown system radio /sys/class/camera/front/front_camfw
+    chown system radio /sys/class/camera/front/front_camtype
+    chown radio system /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
+    chmod 0660 /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
 
     # Permissions for Barcode Emul
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_send
@@ -309,25 +322,6 @@ on fs
     symlink /dev/block/mmcblk0p13 /dev/mbin0
 
 on post-fs-data
-
-
-    # Create data/gps for GPS daemon
-    chown root system /dev/ttySAC1
-    chmod 0660 /dev/ttySAC1
-    chown root system /sys/class/sec/gps/GPS_PWR_EN/value
-    chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
-
-    # Make sure data_system dir and perms are properly set.
-    mkdir /data/system 0771 system system
-    chown system system /data/system
-    mkdir /data/system/gps 0771 system system
-    chown system system /data/system/gps
-
-    # Delete gps Factory file
-    rm /data/gps_started
-    rm /data/glonass_started
-    rm /data/smd_started
-    rm /data/sv_cno.info
 
     #QCRIL
 
@@ -467,6 +461,7 @@ service TvoutService_C /system/bin/bintvoutservice
      class main
      user system
      group system
+
 on property:ro.tvout.enable=false
     stop TvoutService_C
 
@@ -492,7 +487,6 @@ service wlandutservice /system/bin/wlandutservice
 
 service macloader /system/bin/macloader
     class main
-    disabled
     oneshot
 
 on property:sys.mobicoredaemon.enable=true
@@ -503,152 +497,10 @@ on property:init.svc.macloader=stopped
     chmod 0664 /data/.cid.info
     chown system root /data/.rev
     chmod 0660 /data/.rev
-    # End of wifi
 
-service ril-daemon /system/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket rild-debug stream 660 radio system
-    user root
-    group radio cache inet misc audio sdcard_rw log sdcard_r
-    onrestart restart cpboot-daemon
-
-    # For EncryptionMode - remove disabled, Modify class main
-service qmiproxy /system/bin/qmiproxy
-    class main
-    user radio
-    group radio gps
-
-service qmuxd /system/bin/qmuxd
-    class main
-    user root
-    group radio log audio bluetooth gps log
-
-    # GPS
-service gpsd /system/bin/gpsd -c /system/etc/gps.xml
-    class main
-    user gps
-    group system inet net_raw
-    ioprio be 0
-
-on property:ro.use_data_netmgrd=false
-    stop netmgrd
-
-    # For LogMeIn
-    service RescueStarter /system/bin/RescueStarter
-    class core
-    user graphics
-    group input graphics
-
-    # Bluetooth LE 2 wired Test
-service LE_dut_cmd_on /system/bin/bttestintf enable
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service LE_dut_cmd_off /system/bin/bttestintf disable
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service bttestdaemon /system/bin/bttestd
-    class main
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-    # Bluetooth dhcp config
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
+# Workaround for broken incall audio
+service bootsnd /system/bin/tinyplay /system/etc/sound/silence.wav -D 0 -d 0 -p 880
     class late_start
-    disabled
-    oneshot
-
-    # SA, System SW, SAMSUNG
-service bugreport /system/bin/bugmailer.sh -v
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
-service sdumpstate /system/bin/dumpstate -P
-    class main
-    disabled
-    oneshot
-
-service ipruleset /system/bin/ipruleset
-    class main
-    group vpn net_admin inet net_raw
-    disabled
-    oneshot
-
-on property:ro.dumpstate.dmesg=1
-    write /proc/sys/kernel/dmesg_restrict 0
-
-    # Service for TZPR provisioning version check app
-service scranton_RD /system/bin/scranton_RD
-    class main
     user root
-    disabled
-    oneshot
-
-    # Start for TZPR provisioning version check app
-on property:sys.mobicoredaemon.enable=true
-    start scranton_RD
-
-    # Secure Storage startup
-service secure_storage /system/bin/secure_storage_daemon
-    class core
-    user system
-    group system
-    disabled
-
-on property:ro.securestorage.knox=true
-    mkdir /dev/.secure_storage
-    chmod 0711 /dev/.secure_storage
-    chown system system /dev/.secure_storage
-    restorecon -R /dev/.secure_storage
-    start secure_storage
-
-    # LPM
-on property:ro.bootmode=charger
-    mount ext4 /dev/block/mmcblk0p20 /system wait ro
-
-on property:ro.bootmode=charger
-    class_start sec-charger
-
-service playlpm /system/bin/lpm
-    class sec-charger
-    critical
-	
-    # NPSMOBEX
-service mobex-daemon /system/bin/npsmobex
-    class main
-    user system
-    group system radio inet sdcard_r sdcard_rw media_rw shell
-
-service DR-daemon /system/bin/ddexe
-    class main
-    user root
-    group system radio inet net_raw
-
-service SMD-daemon /system/bin/smdexe
-    class main
-    user root
-    group system radio inet net_raw
-
-service BCS-daemon /system/bin/connfwexe
-    class main
-    user root
-    group system radio inet net_raw
-	
-    # RTCC INIT
-service rtccd /system/bin/rtccd2 -a 375M
-    class core
-    user root
+    group audio
     oneshot

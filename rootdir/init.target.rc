@@ -1,57 +1,70 @@
-on post-fs-data
-# Permissions for Camera
-    chown system radio /sys/class/camera/rear/rear_camfw
-    chown system radio /sys/class/camera/rear/rear_camtype
-    chown system radio /sys/class/camera/rear/rear_flash
-    chown system radio /sys/class/camera/rear/rear_vendorid
-    chown system media_rw /sys/class/camera/rear/rear_checkApp
-    chown system media_rw /sys/class/camera/rear/rear_camclose
-    chown system radio /sys/class/camera/rear/isp_core
-    chown system radio /sys/class/camera/front/front_camfw
-    chown system radio /sys/class/camera/front/front_camtype
-    chown system radio /sys/class/camera/flash/rear_flash
-    chown radio system /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
-    chmod 0660 /sys/devices/platform/samsung-pd.5/s3c-fimc.2/range_mode
-
-# Restorecon
-    restorecon /efs/nv_data.bin
-    restorecon /efs/nv_data.bin.md5
-    restorecon /efs/.nv_core.bak
-    restorecon /efs/.nv_core.bak.md5
-    restorecon /efs/.nv_data.bak
-    restorecon /efs/.nv_data.bak.md5
-    restorecon /efs/.nv_state
-    restorecon /efs/bluetooth/bt_addr
-    restorecon /efs/FactoryApp/factorymode
-    restorecon /efs/FactoryApp/hw_ver
-    restorecon /efs/FactoryApp/keystr
-    restorecon /efs/FactoryApp/serial_no
-    restorecon /efs/imei/mps_code.dat
-    restorecon /efs/gyro_cal_data
-    restorecon /efs/wifi/.mac.info
 
 on fs
+    # Create data/gps for GPS daemon
+    chown root system /dev/ttySAC1
+    chmod 0660 /dev/ttySAC1
+    chown root system /sys/class/sec/gps/GPS_PWR_EN/value
+    chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
+
+    # Make sure data_system dir and perms are properly set.
+    mkdir /data/system 0771 system system
+    chown system system /data/system
+    mkdir /data/system/gps 0771 system system
+    chown system system /data/system/gps
+
+    # Delete gps Factory file
+    rm /data/gps_started
+    rm /data/glonass_started
+    rm /data/smd_started
+    rm /data/sv_cno.info
+
     # IPC sysfs
     chown radio radio /sys/devices/virtual/misc/multipdp/waketime
     symlink /dev/block/mmcblk0p13 /dev/mbin0
-
-# AT Distributor for factory test
-service at_distributor /system/bin/at_distributor
-    class late_start
-    user root
-    group radio log
-
-on property:init.svc.ril-daemon=restarting
-    restart cpboot-daemon
 
 service cpboot-daemon /sbin/cbd -d -txmm626 -bh -mh -p13
     class main
     user root
     group radio cache inet misc audio sdcard_rw log
 
-# GPS
+service ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    user root
+    group radio cache inet misc audio sdcard_rw log sdcard_r
+    onrestart restart cpboot-daemon
+
+    # AT Distributor for factory test
+service at_distributor /system/bin/at_distributor
+    class late_start
+    user root
+    group radio log
+
+    # GPS
 service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     class main
     user gps
     group system inet
     ioprio be 0
+
+    #NPSMOBEX
+service mobex-daemon /system/bin/npsmobex
+    class main
+    user system
+    group system radio inet sdcard_r sdcard_rw media_rw shell
+
+service DR-daemon /system/bin/ddexe
+    class main
+    user root
+    group system radio inet net_raw
+
+service SMD-daemon /system/bin/smdexe
+    class main
+    user root
+    group system radio inet net_raw
+
+service BCS-daemon /system/bin/connfwexe
+    class main
+    user root
+    group system radio inet net_raw

@@ -177,15 +177,13 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetooth
 
 # Kernel
-#TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
+#TARGET_KERNEL_SOURCE := kernel/samsung/mproject3g
 #TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
 
 # RIL
 #BOARD_RIL_CLASS := ../../../device/samsung/mproject3g/ril/telephony/java
-
-# Webviewchromium
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 
 # Selinux
 BOARD_SEPOLICY_DIRS := \

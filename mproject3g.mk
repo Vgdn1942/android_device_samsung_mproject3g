@@ -72,7 +72,6 @@ PRODUCT_PACKAGES := \
     libnetcmdiface \
     libsecion \
     libsync \
-    lights.exynos4 \
     macloader \
     tinymix
 
@@ -233,6 +232,10 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_PACKAGES += \
 #    camera.smdk4x12
 
+# IRDA
+PRODUCT_PACKAGES += \
+    consumerir.exynos4
+
 # Sensors
 #PRODUCT_PACKAGES += \
 #    sensorservice \
@@ -244,10 +247,10 @@ PRODUCT_COPY_FILES += \
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
-    Stk \
-    SamsungServiceMode \
     libsecril-client \
-    libsecril-client-sap
+    libsecril-client-sap \
+    Stk \
+    SamsungServiceMode
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -278,7 +281,7 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungExynos4RIL \
-    mobiledata.interfaces=rmnet0,wlan0,gprs,ppp0 \
+    mobiledata.interfaces=rmnet0,pdp0,wlan0,gprs,ppp0 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
 

@@ -7,4 +7,7 @@ cd ~/cm-11.0/device/samsung/mproject3g
 cd ~/cm-11.0
 . build/envsetup.sh
 croot
+export USE_CCACHE=1
+export CCACHE_DIR=~/.ccache
+prebuilts/misc/linux-x86/ccache/ccache -M 50G
 brunch mproject3g

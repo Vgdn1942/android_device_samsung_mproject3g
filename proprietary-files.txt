@@ -15,10 +15,11 @@ system/lib/hw/gps.default.so
 
 # RIL
 system/bin/at_distributor
-#system/bin/rild
+system/bin/npsmobex
+system/bin/ddexe
+system/bin/smdexe
+system/bin/connfwexe
 system/lib/libsec-ril.so
-#system/lib/libril.so
-#system/lib/librilutils.so
 
 # Sensors
 system/bin/sensorservice
@@ -31,14 +32,6 @@ system/lib/libTVOut.so
 # Camera
 system/cameradata/datapattern_420sp.yuv
 system/cameradata/datapattern_front_420sp.yuv
-system/lib/hw/camera.smdk4x12.so
-#system/lib/libcamera_client.so
-#system/lib/libarccamera.so
-#system/lib/libcamera_client.so
-#system/lib/libcameraservice.so
-#system/lib/libseccameracore.so
-#system/lib/libseccamera_jni.so
-#system/lib/libseccameraeffect.so
 
 # Wi-Fi
 system/etc/wifi/bcmdhd_apsta.bin_b2
@@ -54,9 +47,6 @@ system/vendor/firmware/bcm4334.hcd
 system/vendor/firmware/bcm4334_murata.hcd
 system/vendor/firmware/bcm4334_semco.hcd
 
-# IR
-system/lib/hw/consumerir.default.so
-
 # NFC
 system/lib/hw/nfc_nci.smdk4x12.so
 system/etc/libnfc-brcm.conf
@@ -66,7 +56,6 @@ system/lib/egl/libEGL_mali.so
 system/lib/egl/libGLESv1_CM_mali.so
 system/lib/egl/libGLESv2_mali.so
 system/lib/libakm.so
-system/lib/libaudiosa.so
 system/lib/libcec.so
 system/lib/libddc.so
 system/lib/libedid.so
@@ -80,7 +69,11 @@ system/lib/libMcRegistry.so
 system/lib/libMcVersion.so
 system/lib/libQmageDecoder.so
 system/lib/libsecnativefeature.so
-system/lib/libsecion.so
+system/lib/libExynosHWCService.so
+system/lib/libSecEDSVendorBase.so
+system/lib/libSecExternalDisplayservice.so
+system/lib/libSecExternalDisplayinterface.so
+system/lib/libSecExternalDisplay_jni.so
 system/lib/libUMP.so
 system/lib/libhdmi.so
 system/lib/libhdmiclient.so
@@ -175,10 +168,13 @@ system/vendor/firmware/mfc_fw.bin
 system/vendor/firmware/setfile.bin
 system/vendor/firmware/M9MO_SFW.bin
 system/vendor/firmware/RS_M9MO.bin
-system/vendor/lib/hw/lights.exynos4.so
 system/vendor/lib/hw/power.exynos4.so
+system/vendor/lib/hw/lights.exynos4.so
+
 
 # DRM
+system/lib/libwvm.so
+system/lib/drm/libdrmwvmplugin.so
 system/vendor/lib/liblvverx_3.21.13.so
 system/vendor/lib/liblvvetx_3.21.13.so
 system/vendor/lib/libwvdrm_L3.so

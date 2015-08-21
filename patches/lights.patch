@@ -1,0 +1,13 @@
+diff --git a/exynos4x12.mk b/exynos4x12.mk
+index 02027cc..c167a1a 100644
+--- a/exynos4x12.mk
++++ b/exynos4x12.mk
+@@ -17,7 +17,7 @@ ifeq ($(TARGET_SOC),exynos4x12)
+ 
+ include $(TARGET_HAL_PATH)/Android.mk
+ include $(SAM_ROOT)/exynos/multimedia/Android.mk
+-include $(SAM_ROOT)/exynos4/exynos4x12/Android.mk
++#include $(SAM_ROOT)/exynos4/exynos4x12/Android.mk
+ include $(SAM_ROOT)/exynos4/nfc/Android.mk
+ 
+ endif

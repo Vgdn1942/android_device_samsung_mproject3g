@@ -20,6 +20,10 @@ system/bin/ddexe
 system/bin/smdexe
 system/bin/connfwexe
 system/lib/libsec-ril.so
+system/lib/libaudio-ril.so
+
+#system/lib/libril.so
+#system/lib/libsecril-client.so
 
 # Sensors
 system/bin/sensorservice
@@ -60,7 +64,6 @@ system/lib/libcec.so
 system/lib/libddc.so
 system/lib/libedid.so
 system/lib/libfimc.so
-system/lib/libfimg.so
 system/lib/libhwconverter.so
 system/lib/libhwjpeg.so
 system/lib/libMali.so

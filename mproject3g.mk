@@ -104,6 +104,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     static_busybox \
     make_ext4fs \
+    e2fsck \
     setup_fs
 
 # Live Wallpapers
@@ -201,14 +202,6 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-# Webviewchromium
-ifeq ($(PRODUCT_PREBUILT_WEBVIEWCHROMIUM),yes)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuild_chromium/libwebviewchromium.so:system/lib/libwebviewchromium.so \
-    $(LOCAL_PATH)/prebuild_chromium/libchromium_net.so:system/lib/libchromium_net.so \
-    $(LOCAL_PATH)/prebuild_chromium/libstagefright_chromium_http.so:system/lib/libstagefright_chromium_http.so
-endif
-
 # Resolution
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -241,16 +234,19 @@ PRODUCT_PACKAGES += \
 #    sensorservice \
 #    sensors.smdk4x12
 
-# Gps
+# GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
+
+PRODUCT_PACKAGES += \
+   gps.smdk4x12
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
     libsecril-client \
     libsecril-client-sap \
-    Stk \
-    SamsungServiceMode
+    SamsungServiceMode \
+    Stk
 
 # NFC
 PRODUCT_PACKAGES += \

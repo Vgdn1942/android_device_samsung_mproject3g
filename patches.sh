@@ -25,18 +25,6 @@ echo "${red}Не применён!${txtrst}"
 echo "-----------------------"
 fi
 
-# Библиотека liblights
-if
-echo "${grn}Патч 'liblights'${txtrst}"
-cat patches/lights.patch | patch -d $DSTDIR/hardware/samsung/ -p1 -N -r -
-then
-echo "${grn}Применён успешно!${txtrst}"
-echo "-----------------------"
-else
-echo "${red}Не применён!${txtrst}"
-echo "-----------------------"
-fi
-
 cd $DSTDIR
 
 #git diff > x.patch

@@ -169,9 +169,9 @@ BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.exynos4
 
 # RIL
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm6262
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/mproject3g/include
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetooth

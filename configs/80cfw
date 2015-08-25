@@ -2,8 +2,6 @@
 #
 # Copy camera firmware to /data/cfw
 #
-busybox mkdir /data/cfw
-
 busybox cp /system/vendor/firmware/M9MO_SFW.bin /data/cfw/
 busybox cp /system/vendor/firmware/RS_M9MO.bin /data/cfw/
 

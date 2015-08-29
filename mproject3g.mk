@@ -39,7 +39,8 @@ PRODUCT_COPY_FILES := \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/silence.wav:system/etc/sound/silence.wav
+    $(LOCAL_PATH)/audio/silence.wav:system/etc/sound/silence.wav \
+    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/mproject3g
 
 # Camera FW
 PRODUCT_COPY_FILES += \
@@ -217,10 +218,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/lib/modules/pvtcpkm.ko:root/lib/modules/pvtcpkm.ko \
     $(LOCAL_PATH)/rootdir/lib/modules/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko
 
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/mproject3g
-
 # Camera Wrapper
 #PRODUCT_PACKAGES += \
 #    camera.smdk4x12
@@ -279,7 +276,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungExynos4RIL \
     mobiledata.interfaces=rmnet0,pdp0,wlan0,gprs,ppp0 \
     ro.telephony.call_ring.multiple=false \
-    ro.telephony.call_ring.delay=3000
+    ro.telephony.call_ring.delay=3000 \
+    ro.ril.ecclist=112,911
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

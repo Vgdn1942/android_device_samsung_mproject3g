@@ -20,10 +20,6 @@ system/bin/ddexe
 system/bin/smdexe
 system/bin/connfwexe
 system/lib/libsec-ril.so
-system/lib/libaudio-ril.so
-
-#system/lib/libril.so
-#system/lib/libsecril-client.so
 
 # Sensors
 system/bin/sensorservice
@@ -36,6 +32,16 @@ system/lib/libTVOut.so
 # Camera
 system/cameradata/datapattern_420sp.yuv
 system/cameradata/datapattern_front_420sp.yuv
+system/lib/hw/camera.smdk4x12.so
+
+system/lib/libarcsoft_picaction.so
+system/lib/libarcsoft_night_shot.so
+system/lib/libarcsoft_skin_soften.so
+system/lib/libarcsoft_flawlessface.so
+system/lib/libarcsoft_face_tracking.so
+system/lib/libarcsoft_detection_base.so
+system/lib/libarcsoft_smile_detection.so
+system/lib/libarcsoft_picaction_manual.so
 
 # Wi-Fi
 system/etc/wifi/bcmdhd_apsta.bin_b2

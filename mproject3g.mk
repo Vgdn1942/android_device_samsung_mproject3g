@@ -218,7 +218,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/lib/modules/pvtcpkm.ko:root/lib/modules/pvtcpkm.ko \
     $(LOCAL_PATH)/rootdir/lib/modules/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko
 
-# Camera Wrapper
+# Camera
 #PRODUCT_PACKAGES += \
 #    camera.smdk4x12
 
@@ -235,15 +235,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml
 
-PRODUCT_PACKAGES += \
-   gps.smdk4x12
+#PRODUCT_PACKAGES += \
+#   gps.smdk4x12
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
     libsecril-client \
     libsecril-client-sap \
     SamsungServiceMode \
-    Stk
+    Stk \
+    libexifa \
+    libjpega \
+    libkeyutils
 
 # NFC
 PRODUCT_PACKAGES += \

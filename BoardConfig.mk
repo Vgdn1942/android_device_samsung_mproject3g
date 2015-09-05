@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-USE_CAMERA_STUB := true
+USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
 
 TARGET_BOOTANIMATION_PRELOAD := true
@@ -178,8 +178,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/mproject3g/bluetoo
 
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/samsung/mproject3g
+#TARGET_KERNEL_SOURCE := kernel/samsung/smdk4x12
 #TARGET_KERNEL_CONFIG := cyanogenmod_mproject3g_defconfig
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 TARGET_PREBUILT_KERNEL := device/samsung/mproject3g/kernel
 
 # RIL

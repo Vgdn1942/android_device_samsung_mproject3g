@@ -32,7 +32,7 @@ system/lib/libTVOut.so
 # Camera
 system/cameradata/datapattern_420sp.yuv
 system/cameradata/datapattern_front_420sp.yuv
-дsystem/lib/hw/camera.smdk4x12.so
+system/lib/hw/camera.smdk4x12.so
 
 system/lib/libarcsoft_picaction.so
 system/lib/libarcsoft_night_shot.so
